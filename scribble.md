@@ -53,4 +53,4 @@ filename: "[name].bundle.js",
 path: path.resolve(\_\_dirname, "dist"),
 },
 
-the [name] bit so it would create a file named correctly each time.
+the [name] bit so it would create a file named correctly each time. For whatever reason path: **dirname + '/dist' would never work for me but path: path.resolve(**dirname, "dist") does.
