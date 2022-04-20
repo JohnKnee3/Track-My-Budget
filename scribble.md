@@ -43,3 +43,14 @@ This goes through and bundles up all of our scrpit.js files and compresses it so
 # 19.3.4
 
 We went through the process of splitting our code from the script.js into several different files so they will only be loaded when needed. There was a ton of copy paste and some things don't quite feel right. I will have to pay close attention moving forward to see if this works because we have not tested anything yet.
+
+# 19.3.5
+
+We set up the files and got the build to run. There were several issues along the way but one of the biggest things we updated was our webpack file. We added
+
+output: {
+filename: "[name].bundle.js",
+path: path.resolve(\_\_dirname, "dist"),
+},
+
+the [name] bit so it would create a file named correctly each time.
