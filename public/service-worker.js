@@ -1,5 +1,7 @@
 // global constants
-const CACHE_NAME = "my-site-cache-v2";
+const APP_PREFIX = "Track-My-Budget-";
+const VERSION = "version_01";
+const CACHE_NAME = APP_PREFIX + VERSION;
 const DATA_CACHE_NAME = "data-cache-v2";
 
 const FILES_TO_CACHE = [
@@ -23,17 +25,22 @@ const FILES_TO_CACHE = [
 self.addEventListener("install", function (e) {
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      console.log("Your files were pre-cached successfully!");
+      console.log("installing cache : " + CACHE_NAME);
       return cache.addAll(FILES_TO_CACHE);
     })
   );
   self.skipWaiting();
 });
 
-// Activate the service worker and remove old data from the cache
-self.addEventListener("activate", function (evt) {
-  evt.waitUntil(
-    caches.keys().then((keyList) => {
+// activate a service worker
+self.addEventListener("activate", function (e) {
+  e.waitUntil(
+    caches.keys().then(function (keyList) {
+      let cacheKeeplist = keyList.filter(function (key) {
+        return key.indexOf(APP_PREFIX);
+      });
+      cacheKeeplist.push(CACHE_NAME);
+      // returns a promise that resolves once all old versions of the cache have been deleted
       return Promise.all(
         keyList.map((key) => {
           if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
@@ -44,8 +51,6 @@ self.addEventListener("activate", function (evt) {
       );
     })
   );
-
-  self.clients.claim();
 });
 
 // Intercept fetch requests
