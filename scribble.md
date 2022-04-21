@@ -57,4 +57,4 @@ the [name] bit so it would create a file named correctly each time. For whatever
 
 # 19.3.6
 
-We were introduced to more webpack functionality. This time we were intorduced to file-loader & image-webpack-loader. These two things together made it possible to load images into the dist folder and then resizes so the app can perform better.!
+We were introduced to more webpack functionality. This time we were intorduced to file-loader & image-webpack-loader. These two things together made it possible to load images into the dist folder and then resizes so the app can perform better.!!
