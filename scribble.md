@@ -21,7 +21,7 @@ Downloaded the webpack npm package.
 
 We built the webpack.config.js file that looks like this.
 
-const webpack = require("webpack");
+<!-- const webpack = require("webpack");
 const path = require("path");
 module.exports = {
 entry: "./assets/js/script.js",
@@ -36,7 +36,7 @@ jQuery: "jquery",
 }),
 ],
 mode: "development",
-};
+}; -->
 
 This goes through and bundles up all of our scrpit.js files and compresses it so it will run faster. We had to require Jquery(in this file) and bootstrap(in script.js) to get the page to perform properly. This went very fast and may need a re read.
 
@@ -53,4 +53,8 @@ filename: "[name].bundle.js",
 path: path.resolve(\_\_dirname, "dist"),
 },
 
-the [name] bit so it would create a file named correctly each time. For whatever reason path: **dirname + '/dist' would never work for me but path: path.resolve(**dirname, "dist") does.
+the [name] bit so it would create a file named correctly each time. For whatever reason path: \_\_dirname + '/dist' would never work for me but path: path.resolve(\*\*dirname, "dist") does.
+
+# 19.3.6
+
+We were introduced to more webpack functionality. This time we were intorduced to file-loader & image-webpack-loader. These two things together made it possible to load images into the dist folder and then resizes so the app can perform better.
